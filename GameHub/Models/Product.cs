@@ -29,5 +29,7 @@ namespace GameHub.Models
         // ref to 2nd child model - 1 product can be in many orderdetails (bought many times)
         public List<OrderDetail>? OrderDetails { get; set; }
 
+        public int ReleaseYear { get; set; }
+
     }
 }

@@ -23,5 +23,6 @@ namespace GameHub.Models
 
         // 2nd parent ref - 1 product in many orderdetails
         public Product? Product { get; set; }
+
     }
 }
