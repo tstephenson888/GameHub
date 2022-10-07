@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Scope+One&display=swap');
+
 html {
   font-size: 14px;
 }
@@ -14,7 +16,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Scope One', serif;
 }
 
 table.sortable th:hover {
@@ -28,3 +31,23 @@ table.sortable th:hover {
 .thumb {
     width: 70px;
 }
+
+.navbar-dark {
+    background-color: #D32F2F;
+}
+
+.btn-primary {
+    background-color: #757575;
+}
+
+    .btn-primary:hover {
+        background-color: #FF5252;
+    }
+
+a {
+    color: #FF5252;
+}
+
+    a:hover {
+        color: #FFCDD2;
+    }
