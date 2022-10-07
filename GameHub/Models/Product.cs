@@ -13,6 +13,7 @@ namespace GameHub.Models
         public string? Name { get; set; }
 
         [Range(0.01, 999999)]
+        [DisplayFormat(DataFormatString = "{0:c}")]  // c is the MS current format code
         public decimal? Price { get; set; }
 
         public string? Photo { get; set; }
@@ -29,6 +30,7 @@ namespace GameHub.Models
         // ref to 2nd child model - 1 product can be in many orderdetails (bought many times)
         public List<OrderDetail>? OrderDetails { get; set; }
 
+        [Display(Name = "Release Year")]
         public int ReleaseYear { get; set; }
 
     }
