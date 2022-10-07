@@ -19,6 +19,7 @@ namespace GameHub.Models
         public string? Photo { get; set; }
 
         // FK for Category
+        [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
         // ref to parent model

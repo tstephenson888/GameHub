@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create" class="btn btn-secondary">Add a New Product</a>
 </p>
-<table class="table">
+<table class="table sortable">
     <thead>
         <tr>
             <th>
@@ -18,7 +18,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
+            <th class="sorttable_nosort">
                 @Html.DisplayNameFor(model => model.Photo)
             </th>
             <th>
@@ -27,7 +27,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ReleaseYear)
             </th>
-            <th>Actions</th>
+            <th class="sorttable_nosort">Actions</th>
         </tr>
     </thead>
     <tbody>

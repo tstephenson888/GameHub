@@ -22,7 +22,7 @@ namespace GameHub.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Products.Include(p => p.Category);
+            var applicationDbContext = _context.Products.OrderBy(p => p.Name).Include(p => p.Category);
             return View(await applicationDbContext.ToListAsync());
         }
 
