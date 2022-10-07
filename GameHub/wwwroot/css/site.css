@@ -24,3 +24,7 @@ table.sortable th:hover {
 .sorttable_nosort:hover {
     cursor: default !important;
 }
+
+.thumb {
+    width: 70px;
+}

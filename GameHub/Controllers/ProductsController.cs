@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GameHub.Data;
 using GameHub.Models;
+using System.Net.NetworkInformation;
 
 namespace GameHub.Controllers
 {
@@ -57,10 +58,17 @@ namespace GameHub.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,Name,Price,Photo,CategoryId,ReleaseYear")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,Name,Price,CategoryId,ReleaseYear")] Product product, IFormFile? Photo)
         {
             if (ModelState.IsValid)
             {
+                // upload the product photo if the user selected one (if not, ignore the photo)
+                if (Photo != null)
+                {
+                    var fileName = UploadPhoto(Photo);
+                    product.Photo = fileName;
+                }
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -163,6 +171,30 @@ namespace GameHub.Controllers
         private bool ProductExists(int id)
         {
           return _context.Products.Any(e => e.ProductId == id);
+        }
+
+        // re-usable method to upload a Product photo with a unique name
+        private static string UploadPhoto(IFormFile Photo)
+        {
+            // get temp location of uploaded photo
+            var filePath = Path.GetTempFileName();
+
+            // use Globally Unique Identifier class (aka GUID) to ensure we name the photo with a unique name
+            // e.g. myPhoto.jpg => 234lku8asfjkl98273498-myPhoto.jpg
+            var fileName = Guid.NewGuid() + "-" + Photo.FileName;
+
+            // set destination path to wwwroot/img/products
+            // this must be dynamic so it works on any server as each server uses its own directory path
+            var uploadPath = System.IO.Directory.GetCurrentDirectory() + "\\wwwroot\\img\\products\\" + fileName;
+
+            // use a filestream to copy the upload to this folder
+            using (var stream = new FileStream(uploadPath, FileMode.Create))
+            {
+                Photo.CopyTo(stream);
+            }
+
+            // send back the new unique file name
+            return fileName;
         }
     }
 }
