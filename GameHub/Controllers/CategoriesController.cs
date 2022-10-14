@@ -11,8 +11,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GameHub.Controllers
 {
-    // require user to be authenticated to access anything in here
-    [Authorize]
+    // require user to be authenticated to access anything in here - v1, now disabled, auth only
+    //[Authorize]
+    // require user to in Administrator role to access anything in here - v2, role checking
+    [Authorize(Roles = "Administrator")]
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;

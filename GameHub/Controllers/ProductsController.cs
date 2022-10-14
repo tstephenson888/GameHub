@@ -8,9 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using GameHub.Data;
 using GameHub.Models;
 using System.Net.NetworkInformation;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GameHub.Controllers
 {
+    // v1 authentication check only, now disabled
+    //[Authorize]
+    // v2 authorization check based on roles, now active
+    [Authorize(Roles = "Administrator")]
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -28,6 +33,7 @@ namespace GameHub.Controllers
         }
 
         // GET: Products/Details/5
+        [AllowAnonymous]  // make this view public to all users, overriding the class level authentication check above
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Products == null)
