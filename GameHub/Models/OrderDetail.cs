@@ -18,15 +18,11 @@ namespace GameHub.Models
         [Required]
         public int ProductId { get; set; }
 
-<<<<<<< Updated upstream
         // parent ref - 1 order many orderdetails
         public Order? Order { get; set; }
 
         // 2nd parent ref - 1 product in many orderdetails
         public Product? Product { get; set; }
 
-=======
-        // parent ref - 1 order 
->>>>>>> Stashed changes
     }
 }
