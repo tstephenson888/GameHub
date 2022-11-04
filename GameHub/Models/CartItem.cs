@@ -18,7 +18,10 @@ namespace GameHub.Models
         [Required]
         public int ProductId { get; set; }
 
+<<<<<<< Updated upstream
         // parent ref to Product - every cartitem is for only 1 product
+=======
+>>>>>>> Stashed changes
         public Product? Product { get; set; }
     }
 }

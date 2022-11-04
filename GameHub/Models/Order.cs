@@ -1,5 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+<<<<<<< Updated upstream
 using System.Xml.Linq;
+=======
+>>>>>>> Stashed changes
 
 namespace GameHub.Models
 {
@@ -52,7 +55,10 @@ namespace GameHub.Models
         [MaxLength(100)]
         public string PaymentCode { get; set; }
 
+<<<<<<< Updated upstream
         // child ref - 1 order has many orderdetails
+=======
+>>>>>>> Stashed changes
         public List<OrderDetail>? OrderDetails { get; set; }
     }
 }
