@@ -18,7 +18,6 @@ namespace GameHub.Models
 
         public string? Photo { get; set; }
 
-<<<<<<< Updated upstream
         // FK for Category
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
@@ -36,20 +35,4 @@ namespace GameHub.Models
         public int ReleaseYear { get; set; }
 
     }
-=======
-        // Key for Category
-        public int CategoryId { get; set; }
-
-        // ref to parent model
-        public Category? Category
-        {
-            get; set; }
-        }
-
-    // ref to child - 1 product can exist in many carts
-
-    public List<CartItem>? CartItems { get; set; }
-
-    public List<OrderDetail>? OrderDetails { get; set; }
->>>>>>> Stashed changes
 }
