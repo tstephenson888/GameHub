@@ -9,6 +9,24 @@
     <link rel="stylesheet" href="~/GameHub.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '791055251984295',
+                xfbml: true,
+                version: 'v15.0'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -54,6 +72,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <!-- js table sorting from https://kryogenix.org/code/browser/sorttable/  -->
     <script src="~/js/sorttable.js"></script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
